@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Brighter Futures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f8f9fa;
+      color: #1a202c;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      padding: 48px 40px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #2d3748;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #718096;
+      font-size: 1.15rem;
+      margin-bottom: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #4a5568;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      transition: all 0.25s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #3182ce;
+      box-shadow: 0 0 0 4px rgba(49,130,206,0.15);
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: row;
+    
+      margin-top: 10px;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: #4a5568;
+    }
+
+    .dob-container {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .dob-container select {
+      flex: 1;
+      min-width: 100px;
+      padding: 12px 16px;
+      background: white;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234a5568' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 12px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #3182ce;
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #2b6cb0;
+      transform: translateY(-2px);
+    }
+
+    .terms {
+      margin-top: 24px;
+      font-size: 0.95rem;
+      color: #718096;
+      text-align: center;
+    }
+
+    .terms a {
+      color: #3182ce;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 36px 24px;
+      }
+      h1 {
+        font-size: 2.6rem;
+      }
+      .dob-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Create Your Account</h1>
+    <p class="subtitle">Join us in bringing hope and opportunity to children, youth, and elders in need</p>
+
+    <form id="signupForm">
+      <!-- Personal Information -->
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+234 801 234 5678" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" placeholder="Street, City, State" required>
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <div class="dob-container">
+          <select name="dobDay" required>
+            <option value="">Day</option>
+            ${Array.from({length: 31}, (_, i) => `<option value="${i+1}">${i+1}</option>`).join('')}
+          </select>
+
+          <select name="dobMonth" required>
+            <option value="">Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+
+          <select name="dobYear" required>
+            <option value="">Year</option>
+            ${Array.from({length: new Date().getFullYear() - 1912}, (_, i) => {
+              const year = new Date().getFullYear() - i;
+              return `<option value="${year}">${year}</option>`;
+            }).join('')}
+          </select>
+        </div>
+      </div>
+
+      <!-- Additional Questions -->
+      <div class="form-group">
+        <label>How long have you been a fan?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="fanDuration" value="new" required> Just discovered you</label>
+          <label><input type="radio" name="fanDuration" value="months"> A few months</label>
+          <label><input type="radio" name="fanDuration" value="1-2years"> 1–2 years</label>
+          <label><input type="radio" name="fanDuration" value="3plus"> 3+ years</label>
+          <label><input type="radio" name="fanDuration" value="notSure"> Not sure / casual supporter</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Have you donated before?</label>
+        <div class="radio-group" style="flex-direction: row; gap: 40px;">
+          <label><input type="radio" name="donatedBefore" value="yes" required> Yes</label>
+          <label><input type="radio" name="donatedBefore" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>How do you want to donate?</label>
+        <div class="radio-group" style="flex-direction: row; flex-wrap: wrap; gap: 24px;">
+          <label><input type="radio" name="donationFrequency" value="daily" required> Daily</label>
+          <label><input type="radio" name="donationFrequency" value="weekly"> Weekly</label>
+          <label><input type="radio" name="donationFrequency" value="monthly"> Monthly</label>
+          <label><input type="radio" name="donationFrequency" value="one-time"> One-time</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="maritalStatus">Marital Status</label>
+        <select name="maritalStatus" id="maritalStatus" required>
+          <option value="">Select...</option>
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+          <option value="divorced">Divorced</option>
+          <option value="widowed">Widowed</option>
+          <option value="preferNot">Prefer not to say</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="profession">Profession / Occupation</label>
+        <input type="text" id="profession" name="profession" placeholder="e.g. Teacher, Engineer, Student..." required>
+      </div>
+
+      <div class="form-group">
+        <label style="display: flex; align-items: center; gap: 10px; font-size: 0.98rem;">
+          <input type="checkbox" name="terms" required>
+          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">Create Account</button>
+    </form>
+  </div>
+  <script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('signupForm');
+    
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent normal form submission
+    
+        // 1. Collect all values
+        const fullName = document.getElementById('fullName')?.value.trim() || '—';
+        const phone = document.getElementById('phone')?.value.trim() || '—';
+        const email = document.getElementById('email')?.value.trim() || '—';
+        const address = document.getElementById('address')?.value.trim() || '—';
+        const profession = document.getElementById('profession')?.value.trim() || '—';
+    
+        // Date of Birth
+        const day = document.getElementById('dobDay')?.value || '—';
+        const month = document.getElementById('dobMonth')?.value || '—';
+        const year = document.getElementById('dobYear')?.value || '—';
+        const dob = `${day}/${month}/${year}`;
+    
+        // Radio groups (get selected value)
+        const fanDuration = document.querySelector('input[name="fanDuration"]:checked')?.value || '—';
+        const donatedBefore = document.querySelector('input[name="donatedBefore"]:checked')?.value || '—';
+        const donationFrequency = document.querySelector('input[name="donationFrequency"]:checked')?.value || '—';
+    
+        // Marital Status (select)
+        const maritalStatus = document.getElementById('maritalStatus')?.value || '—';
+    
+        // 2. Format nice readable message
+        const message = `
+    NEW SIGNUP SUBMISSION
+    ──────────────────────
+    
+    Full Name:          ${fullName}
+    Email:              ${email}
+    Phone:              ${phone}
+    Address:            ${address}
+    Date of Birth:      ${dob}
+    Profession:         ${profession}
+    Marital Status:     ${maritalStatus}
+    
+    How long a fan?:    ${fanDuration}
+    Donated before?:    ${donatedBefore === 'yes' ? 'Yes' : 'No'}
+    Preferred frequency:${donationFrequency}
+    
+    ──────────────────────
+    Submitted from:     ${navigator.userAgent}
+    Date:               ${new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' })}
+        `.trim();
+    
+        // 3. Create mailto link
+        const recipient = '.com';          // ← CHANGE THIS
+        const subject = encodeURIComponent('New Signup - ' + fullName);
+        const body = encodeURIComponent(message);
+    
+        const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    
+        // 4. Open user's default email client
+        window.location.href = mailtoLink;
+    
+        // Optional: Show feedback to user
+        setTimeout(() => {
+          alert('Thank you! Your information has been prepared to send.\n\nYour email client should open now.');
+          // form.reset(); // Optional: clear form after send
+        }, 300);
+      });
+    });
+    </script>
+</body>
+</html>
