@@ -156,8 +156,7 @@
   <div class="container">
     <h1>Create Your Account</h1>
     <p class="subtitle">Join us in bringing hope and opportunity to children, youth, and elders in need</p>
-
-    <form id="signupForm">
+    <form id="signupForm" method="POST" action="https://formspree.io/f/xbddlodv">
       <!-- Personal Information -->
       <div class="form-group">
         <label for="fullName">Full Name</label>
@@ -166,7 +165,7 @@
 
       <div class="form-group">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="+234 801 234 5678" required>
+        <input type="tel" id="phone" name="phone" placeholder="+1 801 234 5678" required>
       </div>
 
       <div class="form-group">
@@ -183,8 +182,37 @@
         <label>Date of Birth</label>
         <div class="dob-container">
           <select name="dobDay" required>
-            <option value="">Day</option>
-            ${Array.from({length: 31}, (_, i) => `<option value="${i+1}">${i+1}</option>`).join('')}
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+            <option value="">5</option>
+            <option value="">6</option>
+            <option value="">7</option>
+            <option value="">8</option>
+            <option value="">9</option>
+            <option value="">10</option>
+            <option value="">11</option>
+            <option value="">12</option>
+            <option value="">13</option>
+            <option value="">14</option>
+            <option value="">15</option>
+            <option value="">16</option>
+            <option value="">17</option>
+            <option value="">18</option>
+            <option value="">19</option>
+            <option value="">20</option>
+            <option value="">21</option>
+            <option value="">22</option>
+            <option value="">23</option>
+            <option value="">24</option>
+            <option value="">25</option>
+            <option value="">26</option>
+            <option value="">27</option>
+            <option value="">28</option>
+            <option value="">29</option>
+            <option value="">30</option>
+            <option value="">31</option>
           </select>
 
           <select name="dobMonth" required>
@@ -203,13 +231,13 @@
             <option value="12">December</option>
           </select>
 
-          <select name="dobYear" required>
-            <option value="">Year</option>
-            ${Array.from({length: new Date().getFullYear() - 1912}, (_, i) => {
-              const year = new Date().getFullYear() - i;
-              return `<option value="${year}">${year}</option>`;
-            }).join('')}
-          </select>
+       
+
+
+          <div  name="dobYear" required class="form-group">
+            <label for="year">Year</label>
+            <input type="text" id="profession" name="year" placeholder="e.g. 2000, 1970, 1990..." required>
+          </div>
         </div>
       </div>
 
@@ -271,12 +299,14 @@
     </form>
   </div>
   <script>
+
+    
     // Wait for DOM to load
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('signupForm');
     
       form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent normal form submission
+      
     
         // 1. Collect all values
         const fullName = document.getElementById('fullName')?.value.trim() || '—';
@@ -322,15 +352,10 @@
         `.trim();
     
         // 3. Create mailto link
-        const recipient = '.com';          // ← CHANGE THIS
+        const recipient = 'https://formspree.io/f/xbddlodv';          // ← CHANGE THIS
         const subject = encodeURIComponent('New Signup - ' + fullName);
         const body = encodeURIComponent(message);
-    
-        const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
-    
-        // 4. Open user's default email client
-        window.location.href = mailtoLink;
-    
+   
         // Optional: Show feedback to user
         setTimeout(() => {
           alert('Thank you! Your information has been prepared to send.\n\nYour email client should open now.');
